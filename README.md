@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 課題08 MiauTube （猫動画専門YouTube風動画サイト）
 
-## Getting Started
+## DEMO
+    後でデプロイ予定
+  - デプロイしている場合はURLを記入（任意）
 
-First, run the development server:
+## 紹介と使い方
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  - 猫動画専門のYouTube風動画サイトです。 
+  - ログイン機能・チャンネル作って投稿・閲覧
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 工夫した点
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  - 今回もNext.jsを使用して作りました。DBはMongoDBにチャレンジしてみました（Prismaで連携）
+  - UIはReact-Hook-FormとReact Icons使用
+  - Cloudinary APIを使用して動画アップロード機能
+  - ロゴはCanvaで作りました（結構可愛いのできた）
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 苦戦した点
 
-## Learn More
+  - ぶっちゃけまだ完成していない。レビュー会までにできるところまで
 
-To learn more about Next.js, take a look at the following resources:
+## 参考にした web サイトなど
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - 今回参考にしたYouTube: https://youtu.be/857d0PnRHOI?si=2C0BKWimpHdRy6zG 
+  - Cloudinary: https://cloudinary.com/
+  - MongoDB: https://www.mongodb.com/ja-jp
+  - React-Icons : https://react-icons.github.io/react-icons/
+  - React Hook Form : https://react-hook-form.com/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
