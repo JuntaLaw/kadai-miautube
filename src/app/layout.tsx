@@ -2,11 +2,15 @@
 import type { Metadata } from 'next'
 import { M_PLUS_1 } from 'next/font/google'
 import './globals.css'
-import Navigation from '@/components/shared/Navigation/Navigation';
-import CurrentUserProvider from '@/context/CurrentUserContext';
-import getCurrentUser from '@/actions/getCurrentUser';
-import CreateChannelModalProvider from '@/context/CreateChannelModalContext';
+import Navigation from '@/components/shared/Navigation/Navigation'
+import CurrentUserProvider from '@/context/CurrentUserContext'
+import getCurrentUser from '@/actions/getCurrentUser'
+import CreateChannelModalProvider from '@/context/CreateChannelModalContext'
 import CreateChannelModal from "@/components/shared/Modal/CreateChannelModal"
+import { Toaster } from 'react-hot-toast'
+import getCurrentChannel from '@/actions/getCurrentChannel'
+import CurrentChannelProvider from '@/context/CurrentChannelContext'
+import UploadVideoModalProvider from '@/context/UploadVideoModalContext'
 
 const mplus1 = M_PLUS_1({
   subsets: ['latin'],
@@ -24,15 +28,21 @@ export default async function RootLayout({
 }) {
 
   const currentUser = await getCurrentUser();
+  const currentChannel = await getCurrentChannel()
 
   return (
     <html lang="ja">
       <body className={mplus1.className}>
         <CreateChannelModalProvider>
+          <Toaster toastOptions={{ position: "bottom-left" }} />
           <CreateChannelModal />
           <CurrentUserProvider user={currentUser}>
-            <Navigation />
-            <div className="pt-16">{children}</div>
+            <CurrentChannelProvider channel={currentChannel}>
+              <UploadVideoModalProvider>
+                <Navigation />
+                <div className="pt-16">{children}</div>
+              </UploadVideoModalProvider>
+            </CurrentChannelProvider>
           </CurrentUserProvider>
         </CreateChannelModalProvider>
       </body>

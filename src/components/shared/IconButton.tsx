@@ -11,7 +11,7 @@ const IconButton: React.FC<React.PropsWithChildren<IconButtonProps>> = ({
     onClick }) => {
     return (
         <div
-            className={'cursor-pointer rounded-full p-2 hover:bg-neutral-800 ${className}'} onClick={onClick}>{children}</div>
+            className={'cursor-pointer rounded-full p-2 bg-neutral-900 hover:bg-neutral-700 ${className}'} onClick={onClick}>{children}</div>
     )
 }
 

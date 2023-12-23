@@ -3,6 +3,10 @@
 import { signOut } from "next-auth/react";
 import MenuItem from "./MenuItem"
 import { PiUserSquareFill, PiYoutubeLogo, PiSignOut, PiCat } from "react-icons/pi"
+import { CreateChannelModalContext } from "@/context/CreateChannelModalContext";
+import { useContext } from "react";
+import { CurrentChannelContext } from "@/context/CurrentChannelContext";
+import { useRouter } from "next/navigation";
 
 interface UserMenuProps {
     onClose: () => void;
@@ -10,6 +14,12 @@ interface UserMenuProps {
 
 const UserMenu: React.FC<UserMenuProps>
     = ({ onClose }) => {
+        const createChannelModel = useContext(CreateChannelModalContext)
+
+        const currentChannel = useContext(CurrentChannelContext)
+
+        const router = useRouter()
+
         return (
             <>
                 <div className="h-screen w-screen fixed z-30"
@@ -18,11 +28,31 @@ const UserMenu: React.FC<UserMenuProps>
                     <MenuItem logo=
                         {<PiUserSquareFill
                             className="h-7 w-7 mr-4" />}
-                        label="Your channel" />
+                        label="Your channel"
+                        onClick={() => {
+                            if (!currentChannel) {
+                                createChannelModel?.onOpen()
+                            } else {
+                                router.push(`/channel/${currentChannel.id}`)
+                            }
+                            onClose()
+                        }}
+                    />
                     <MenuItem logo=
                         {<PiCat
                             className="h-7 w-7 mr-4" />}
-                        label="MiauTube Studio" />
+                        label="MiauTube Studio"
+                        onClick={() => {
+                            if (!currentChannel) {
+                                createChannelModel?.onOpen()
+                            } else {
+                                router.push(`/studio`)
+                            }
+
+                            onClose();
+                        }}
+                    />
+
                     <MenuItem logo=
                         {<PiSignOut
                             className="h-7 w-7 mr-4" />}
