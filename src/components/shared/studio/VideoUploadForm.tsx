@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form"
-import TextArea from "../TextArea"
-import MediaUpload from "../MediaUpload"
-import Image from "next/image"
-import { FaRegSquare } from "react-icons/fa"
+import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
+import TextArea from "@/components/shared/TextArea";
+import MediaUpload from "@/components/shared/MediaUpload";
+import Image from "next/image";
+import { FaRegSquarePlus } from "react-icons/fa6";
 
 interface VideoUploadFormProps {
-    register: UseFormRegister<FieldValues>
-    errors: FieldErrors<FieldValues>
-    changeValue: (id: string, value: string) => void
-    thumbnailSrc: string
-    isLoading: boolean
+    register: UseFormRegister<FieldValues>;
+    errors: FieldErrors<FieldValues>;
+    changeValue: (id: string, value: string) => void;
+    thumbnailSrc: string;
+    isLoading: boolean;
 }
 
 const VideoUploadForm: React.FC<VideoUploadFormProps> = ({
@@ -19,44 +19,55 @@ const VideoUploadForm: React.FC<VideoUploadFormProps> = ({
     errors,
     changeValue,
     thumbnailSrc,
-    isLoading
+    isLoading,
 }) => {
-    return <div className="w-full md:w-3/5 flex flex-col gap-6">
-        <TextArea
-            register={register}
-            id="title"
-            label="Title (requierd)"
-            errors={errors}
-            disabled={isLoading}
-            changeValue={changeValue}
-            required
-        />
-        <TextArea
-            register={register}
-            id="description"
-            label="Description (requierd)"
-            errors={errors}
-            disabled={isLoading}
-            changeValue={changeValue}
-            required
-        />
-        <div>
-            <label className="block mb-2">Thumbnail</label>
-            <MediaUpload onChange={(value) => !isLoading && changeValue("thumbnailSrc", value)}>
-                {thumbnailSrc ? (<Image src={thumbnailSrc} alt="thumbnail" height="112" width="192"
-                    className={`h-28 w-48 overflow-hidden rounded-md 
-                ${!isLoading ? "cursor-pointer" : ""}`} />) : (<div
-                    id="thumbnailSrc"
-                    {...register("thumbnailSrc", { required: true })}
-                    className={`h-28 w-48 bg-zinc-800 rounded-md flex items-center justify-center cursor-pointer border-[1px]
-                    ${errors["thumbnailSrc"]}`}
+    return (
+        <div className="w-full md:w-3/5 flex flex-col gap-6">
+            <TextArea
+                register={register}
+                id="title"
+                label="title (required)"
+                errors={errors}
+                disabled={isLoading}
+                changeValue={changeValue}
+                required
+            />
+            <TextArea
+                register={register}
+                id="description"
+                label="description (required)"
+                errors={errors}
+                disabled={isLoading}
+                changeValue={changeValue}
+                required
+            />
+            <div>
+                <label className="block mb-2">Thumbnail</label>
+                <MediaUpload
+                    onChange={(value) => !isLoading && changeValue("thumbnailSrc", value)}
                 >
-                    <FaRegSquare className="h-6 w-6" />
-                </div>)}
-            </MediaUpload>
+                    {thumbnailSrc ? (
+                        <Image
+                            src={thumbnailSrc}
+                            alt="thumbnail"
+                            height="112"
+                            width="192"
+                            className={`h-28 w-48 overflow-hidden rounded-md ${!isLoading ? "cursor-pointer" : ""
+                                }`}
+                        />) : (
+                        <div
+                            id="thumbnailSrc"
+                            {...register("thumbnailSrc", { required: true })}
+                            className={`h-28 w-48 bg-zinc-800 rounded-md flex items-center justify-center cursor-pointer border-[1px] ${errors["thumbnailSrc"] ? "border-red-500" : "border-zinc-500"
+                                }`}
+                        >
+                            <FaRegSquarePlus className="h-6 w-6" />
+                        </div>
+                    )}
+                </MediaUpload>
+            </div>
         </div>
-    </div>
+    );
+};
 
-}
-
-export default VideoUploadForm
+export default VideoUploadForm;

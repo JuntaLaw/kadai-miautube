@@ -8,7 +8,7 @@ const Logo = () => {
         <Link href="/">
             <Image alt="Logo"
                 className="hidden cursor-pointer mx-4 sm:block"
-                height="30" width="150" src="/images/logo_miautube.svg" />
+                height="30" width="140" src="/images/logo_miautube.svg" />
         </Link>
     )
 }

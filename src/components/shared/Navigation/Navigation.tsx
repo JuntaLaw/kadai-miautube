@@ -3,8 +3,9 @@ import Navbar from './Navbar/Navbar'
 
 const Navigation = () => {
     return (
-        <><Navbar /></>
+        <><Navbar />
+        </>
     )
 }
 
-export default Navigation
+export default Navigation;

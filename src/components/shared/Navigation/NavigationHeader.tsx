@@ -1,9 +1,8 @@
-"use client"
+"use client";
 
-import { MdMenu } from "react-icons/md"
-import React from 'react'
-import IconButton from "../IconButton"
-import Logo from "../Logo"
+import { MdMenu } from "react-icons/md";
+import IconButton from "../IconButton";
+import Logo from "../Logo";
 
 const NavigationHeader = () => {
     return (
@@ -16,4 +15,4 @@ const NavigationHeader = () => {
     )
 }
 
-export default NavigationHeader 
+export default NavigationHeader;

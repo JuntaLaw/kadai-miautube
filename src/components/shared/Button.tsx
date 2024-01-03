@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useMemo, PropsWithChildren } from "react"
+import { useMemo, PropsWithChildren } from "react";
 
 interface ButtonProps {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -9,7 +9,10 @@ interface ButtonProps {
 }
 
 const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
-    onClick, type, children, className
+    onClick,
+    type,
+    children,
+    className,
 }) => {
     const typeClassName = useMemo(() => {
         switch (type) {
@@ -18,7 +21,7 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
             case "secondary":
                 return "text-neautral-400 uppercase text-sm"
             case "box":
-                return "text-neautral-900 uppercase font-medium bg-fuchsia-500 rounded-sm px-4 py-2"
+                return "text-neautral-900 uppercase font-large font-bold bg-pink-500 rounded-sm px-4 py-2"
             case "rounded":
                 return "text-stone-950 font-medium bg-zinc-300 rounded-full px-3 py-2"
             case "rounded-dark":
@@ -26,13 +29,13 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
             default:
                 return ""
         }
-    }, [type])
+    }, [type]);
 
     return (
         <button onClick={onClick} className={`${typeClassName} ${className}`}>
             {children}
         </button>
-    )
-}
+    );
+};
 
-export default Button
+export default Button;

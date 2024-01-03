@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { signIn } from "next-auth/react"
-import { MdOutlineAccountCircle } from "react-icons/md"
+import { signIn } from "next-auth/react";
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 const SignInButton = () => {
     return (
@@ -11,7 +11,7 @@ const SignInButton = () => {
             <MdOutlineAccountCircle className="h-6 w-6" />
             Sign In
         </button>
-    )
-}
+    );
+};
 
-export default SignInButton
+export default SignInButton;

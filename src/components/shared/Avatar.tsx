@@ -1,10 +1,10 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 export enum AvatarSize {
     extraSmall = 24,
     small = 32,
     medium = 40,
-    large = 128,
+    large = 128
 }
 
 interface AvatarProps {
@@ -17,17 +17,20 @@ interface AvatarProps {
 const Avatar: React.FC<AvatarProps> = ({
     className,
     onClick,
+    imageSrc,
     size = AvatarSize.medium,
-    imageSrc }) => {
+}) => {
     return (
-        <Image alt="Avatar"
-            className={`rounded-full aspect-square object-contain ${onClick && "cursor-pointer"} 
-        ${className}`}
-            height={size} width={size} onClick={onClick}
+        <Image
+            alt="Avatar"
+            className={`rounded-full aspect-square object-contain ${onClick && "cursor-pointer"
+                } ${className}`}
+            height={size}
+            width={size}
+            onClick={onClick}
             src={imageSrc || "/images/avatar.png"}
         />
+    );
+};
 
-    )
-}
-
-export default Avatar
+export default Avatar;

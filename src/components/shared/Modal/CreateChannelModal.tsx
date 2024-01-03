@@ -108,7 +108,6 @@ const CreateChannelModal = () => {
                 </Button>
             </div>
         </div>
-
     ) : null;
 };
 

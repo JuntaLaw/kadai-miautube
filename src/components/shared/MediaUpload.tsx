@@ -1,32 +1,38 @@
-"use client"
+"use client";
 
-import { CldUploadWidget } from "next-cloudinary"
+import { CldUploadWidget } from "next-cloudinary";
 
 declare global {
-    var cloudinary: any
+    var cloudinary: any;
 }
+
 interface MediaUploadProps {
-    onChange: (value: string) => void
+    onChange: (value: string) => void;
 }
 
-const MediaUpload: React.FC<React.PropsWithChildren<MediaUploadProps>>
-    = ({ onChange, children }) => {
-        const handleUpload = (result: any) => {
-            onChange(result.info.secure_url)
-        }
-        return (
-            <CldUploadWidget onUpload={handleUpload} uploadPreset="g4gg3a5b" options={{ maxFiles: 1 }}>
-                {
-                    ({ open }) => {
-                        return (
-                            <div onClick={() => open && open()}
-                                className="inline-block">
-                                {children}</div>
-                        )
-                    }
-                }
-            </CldUploadWidget>
-        )
-    }
+const MediaUpload: React.FC<React.PropsWithChildren<MediaUploadProps>> = ({
+    onChange,
+    children,
+}) => {
+    const handleUpload = (result: any) => {
+        onChange(result.info.secure_url);
+    };
 
-export default MediaUpload
+    return (
+        <CldUploadWidget
+            onUpload={handleUpload}
+            uploadPreset="g4gg3a5b"
+            options={{ maxFiles: 1 }}
+        >
+            {({ open }) => {
+                return (
+                    <div onClick={() => open && open()} className="inline-block">
+                        {children}
+                    </div>
+                );
+            }}
+        </CldUploadWidget>
+    );
+};
+
+export default MediaUpload;

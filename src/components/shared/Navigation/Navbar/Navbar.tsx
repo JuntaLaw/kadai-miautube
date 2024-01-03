@@ -1,7 +1,7 @@
-import React from 'react'
-import NavigationHeader from '../NavigationHeader'
-import Search from './search'
-import UserOptions from './UserOptions/UserOptions'
+import React from 'react';
+import NavigationHeader from '../NavigationHeader';
+import Search from './Search';
+import UserOptions from './UserOptions/UserOptions';
 
 const Navbar = () => {
     return (
@@ -13,4 +13,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar;
