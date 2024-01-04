@@ -3,8 +3,8 @@
 
 import Button from "@/components/shared/Button";
 import UploadVideoModal from "@/components/shared/Modal/UploadVideoModal";
-import VideoPreview from "@/components/shared/studio/VideoPreview";
-import VideoUploadForm from "@/components/shared/studio/VideoUploadForm";
+import VideoPreview from "@/components/studio/upload/VideoPreview";
+import VideoUploadForm from "@/components/studio/upload/VideoUploadForm";
 import { UploadVideoModalContext } from "@/context/UploadVideoModalContext";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState, useMemo } from "react";
